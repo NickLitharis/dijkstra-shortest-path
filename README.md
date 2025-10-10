@@ -1,65 +1,87 @@
-# Dijkstra's Shortest Path Algorithm in C
+# 🚀 Dijkstra's Shortest Path Algorithm in C
 
-This C program implements Dijkstra's algorithm to find the shortest path from a source vertex to all other vertices in a graph. The program also allows you to set a maximum path length radius, which can be beneficial in various applications such as network routing and location-based services.
+This is a simple C program that finds the shortest path from a starting point (called the source vertex) to all other points in a graph using Dijkstra’s algorithm.
 
-## Table of Contents
-- [Overview](#overview)
-- [Usage](#usage)
-- [Data Structures](#data-structures)
-- [Input](#input)
-- [Output](#output)
-- [Performance Metrics](#performance-metrics)
-- [Dependencies](#dependencies)
-- [Contributing](#contributing)
-- [License](#license)
+You can also set a maximum path distance (radius) to limit how far you want to search a feature that's useful in areas like navigation, network routing, and games.
 
-## Overview
-This program employs Dijkstra's algorithm, a well-known graph algorithm, to determine the shortest path from a specified source vertex to all other vertices in the graph. It takes into account the weight of edges between vertices and respects a maximum allowed path length (radius).
+## 💡 What This Program Does
 
-## Usage
-1. **Compilation**: Compile the program using a C compiler (e.g., GCC) with the following command:
+This program uses Dijkstra's algorithm to figure out the shortest path from one vertex (your chosen starting point) to all others in a randomly generated graph.
 
-   ```bash
-   gcc -o dijkstra_shortest_path dijkstra_shortest_path.c
-   ```
+You can also set a "radius" — which is just the maximum allowed distance so the program only shows paths within that range.
 
-2. **Execution**: Run the compiled program with the following command:
+## 🛠 How to Use It
+1. Compile the Code
 
-   ```bash
-   ./dijkstra_shortest_path
-   ```
+Use a C compiler like gcc to compile the program:
+```bash
+gcc -o dijkstra_shortest_path dijkstra_shortest_path.c
+```
+2. Run the Program
+```bash
+./dijkstra_shortest_path
+```
 
-   - You will be prompted to input the size of a square grid, the number of vertices, the radius, and the source vertex.
-   - The program will then generate a random graph, apply Dijkstra's algorithm, and display the results.
+3. Follow the Prompts
 
-## Data Structures
-- The program utilizes several data structures to represent the graph and perform Dijkstra's algorithm:
-  - `struct AdjListNode`: Represents a node in the adjacency list.
-  - `struct AdjList`: Represents an adjacency list.
-  - `struct Graph`: Represents the entire graph.
-  - `struct MinHeapNode`: Represents a node in the min-heap used for Dijkstra's algorithm.
-  - `struct MinHeap`: Represents the min-heap data structure.
+- The program will ask you for a few inputs:
 
-## Input
-- **Grid Size (l x l)**: The program prompts you to input the size of the square grid (l x l).
-- **Number of Vertices (n)**: Specify the number of vertices in the graph.
-- **Radius (rad)**: Enter the maximum allowed path length.
-- **Source Vertex**: Provide the starting vertex for path computation.
+- Maximum edge weight (how large the weights between points can be)
 
-## Output
-- The program displays the following information for each vertex:
-  - Vertex number.
-  - Distance from the source vertex.
-- If a vertex is unreachable within the specified radius, it is marked as "unreachable."
+- Number of vertices (how many points in your graph)
 
-## Performance Metrics
-The program measures the execution time for path computation and displays it in milliseconds. This allows you to assess the efficiency of Dijkstra's algorithm and its performance on different input sizes.
+- Radius (maximum path length to consider)
 
-## Dependencies
-The code has no external dependencies and relies solely on standard C library functions.
+- Source vertex (where to start from)
 
-## Contributing
-Contributions to the project are encouraged. You can contribute by providing enhancements, reporting issues, or suggesting improvements.
+Then it generates a graph and runs Dijkstra’s algorithm for you.
 
-## License
-This project is open-source and released under the [MIT License](LICENSE). You are free to use and modify the code according to the terms of the license.
+## 🧱 How It Works (Under the Hood)
+
+This version uses a 2D array to represent the graph, and standard arrays to track:
+
+- Distances from the source
+
+- Whether a node has been visited
+
+- The path taken (via a parent array)
+
+No fancy data structures like heaps are used it’s written to be clear and beginner-friendly.
+
+## 🎮 What You’ll Be Asked To Input
+
+- Maximum edge weight: The largest number that can appear as a weight between two vertices.
+
+- Number of vertices: How many points your graph should have.
+
+- Radius: The farthest distance you care about.
+
+- Source vertex: The starting point for Dijkstra’s algorithm.
+
+## 📤 What You’ll See as Output
+
+For each vertex, the program shows:
+
+- The shortest distance from the source.
+
+- The path taken to get there.
+
+- If a vertex is too far (outside the radius), or can’t be reached at all, it will tell you that too.
+
+Example output:
+
+| Vertex | Distance from Source | Used Path |
+|--------|:----------------------:|:-----------:|
+| 1 -> 3 |           3          |   1 2 3   |
+| 1 -> 5 |      Unreachable     |           |
+
+
+## ⏱ Performance Info
+
+After it runs, the program will show you how long it took to calculate all paths in milliseconds.
+
+This helps you understand how the algorithm performs as the graph gets bigger.
+
+## 📦 Requirements
+
+No external libraries needed, just standard C and a compiler like gcc.
